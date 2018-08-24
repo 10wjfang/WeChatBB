@@ -34,38 +34,17 @@ public class WeChatServiceImpl implements WeChatService {
             // 文本消息
             if (msgType.equals(WeChatContant.REQ_MESSAGE_TYPE_TEXT)) {
                 mes =requestMap.get(WeChatContant.Content).toString();
-                if(mes!=null&&mes.length()<2){
+                if (mes.contains("博客")) {
                     List<ArticleItem> items = new ArrayList<>();
                     ArticleItem item = new ArticleItem();
-                    item.setTitle("照片墙");
-                    item.setDescription("阿狸照片墙");
-                    item.setPicUrl("http://changhaiwx.pagekite.me/photo-wall/a/iali11.jpg");
-                    item.setUrl("http://changhaiwx.pagekite.me/page/photowall");
+                    item.setTitle("方伟俊的博客");
+                    item.setDescription("知识分享");
+                    item.setPicUrl("http://weijunfang.coding.me/blog/img/home-bg.jpg");
+                    item.setUrl("http://weijunfang.coding.me/blog/");
                     items.add(item);
-
-                    item = new ArticleItem();
-                    item.setTitle("哈哈");
-                    item.setDescription("一张照片");
-                    item.setPicUrl("http://changhaiwx.pagekite.me/images/me.jpg");
-                    item.setUrl("http://changhaiwx.pagekite.me/page/index");
-                    items.add(item);
-
-                    item = new ArticleItem();
-                    item.setTitle("小游戏2048");
-                    item.setDescription("小游戏2048");
-                    item.setPicUrl("http://changhaiwx.pagekite.me/images/2048.jpg");
-                    item.setUrl("http://changhaiwx.pagekite.me/page/game2048");
-                    items.add(item);
-
-                    item = new ArticleItem();
-                    item.setTitle("百度");
-                    item.setDescription("百度一下");
-                    item.setPicUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505100912368&di=69c2ba796aa2afd9a4608e213bf695fb&imgtype=0&src=http%3A%2F%2Ftx.haiqq.com%2Fuploads%2Fallimg%2F170510%2F0634355517-9.jpg");
-                    item.setUrl("http://www.baidu.com");
-                    items.add(item);
-
                     respXml = WeChatUtil.sendArticleMsg(requestMap, items);
-                }else if("我的信息".equals(mes)){
+                }
+                else if("我的信息".equals(mes)){
 //                    Map<String, String> userInfo = getUserInfo(requestMap.get(WeChatContant.FromUserName));
 //                    System.out.println(userInfo.toString());
 //                    String nickname = userInfo.get("nickname");
