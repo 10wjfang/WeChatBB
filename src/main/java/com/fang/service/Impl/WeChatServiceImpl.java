@@ -114,9 +114,9 @@ public class WeChatServiceImpl implements WeChatService {
                     // TODO 处理菜单点击事件
                 }
             }
-            mes = mes == null ? "不知道你在干嘛" : mes;
-            if(respXml == null)
-                respXml = WeChatUtil.sendTextMsg(requestMap, mes);
+            //mes = mes == null ? "不知道你在干嘛" : mes;
+            //if(respXml == null)
+            //    respXml = WeChatUtil.sendTextMsg(requestMap, mes);
             System.out.println(respXml);
             return respXml;
         } catch (Exception e) {
