@@ -1,10 +1,12 @@
 package com.fang.utils;
 
 import com.fang.config.WeChatContant;
+import com.fang.domain.AccessToken;
 import com.fang.domain.ArticleItem;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
@@ -212,5 +214,19 @@ public class WeChatUtil {
         map.put("Articles", Articles);
         map.put("ArticleCount", Articles.size());
         return mapToXML(map);
+    }
+
+    /**
+     * 获取access_token
+     * @param appId
+     * @param secret
+     * @return
+     */
+    public static String getAccessToken(String appId, String secret) {
+        RestTemplate restTemplate = new RestTemplate();
+        AccessToken accessToken = restTemplate.getForObject(
+                String.format("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}", appId, secret),
+                AccessToken.class);
+        return accessToken != null ? accessToken.getAccess_token() : "";
     }
 }
