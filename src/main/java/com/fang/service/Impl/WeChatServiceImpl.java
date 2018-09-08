@@ -94,7 +94,7 @@ public class WeChatServiceImpl implements WeChatService {
                 String eventType = (String) requestMap.get(WeChatContant.Event);
                 // 关注
                 if (eventType.equals(WeChatContant.EVENT_TYPE_SUBSCRIBE)) {
-                    respContent = "谢谢您的关注！赶快和我聊天吧，新闻资讯、天气查询、" +
+                    respContent = "谢谢您的关注！新闻资讯、天气查询、" +
                             "菜谱、笑话、酒店、快递、百科、翻译等都可以问我哦";
                     respXml = WeChatUtil.sendTextMsg(requestMap, respContent);
                 }
